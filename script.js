@@ -364,7 +364,7 @@ let scope1Chart = new Chart(scope1CTX, {
 let carbCaptChart = new Chart (carbCapt,{
   type:'bar',
   data:{
-    labels:['Serapan Hutan UI', 'Emisi GRK UI 2023', 'Carbon Offset'],
+    labels:['Serapan Hutan UI', 'Emisi GRK UI', 'Carbon Offset'],
     datasets:[{
       label:['tCO2eq'],
       data:[52133, jumlahTotalEmTahun, jumlahCarbonCapture.toFixed(2)],
@@ -508,7 +508,7 @@ function gantiTeks() {
     scope2Chart.update()
     scope3Chart.update()
 
-    carbCaptChart.data.datasets[0].data = [52133, jumlahTotalEmTahun, jumlahCarbonCapture.toFixed(2)]
+    carbCaptChart.data.datasets[0].data = [52133, jumlahTotalEmTahun.toFixed(2), jumlahCarbonCapture.toFixed(2)]
     carbCaptChart.update()
   }
 
