@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Memasukkan link framework bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Emisi Gas Rumah Kaca Universitas Indonesia</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title_card">
+        <h1>Emisi Gas Rumah Kaca Universitas Indonesia</h1>
+        <hr />
+        <h4 id="judul_skenario">Skenario 1 - Emisi Baseline</h4>
+        <h5 id="ubah_tahun">Pilih Data Tahun Emisi :</h5>
+        <select id="id_tahun_emisi" onchange="gantiTeks()">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+      </div>
+
+      <!--style="display: none;"-->
+      <!--Membuat input dan langkah mitigasi-->
+      <div id="visibility_langkah_mitigasi" class="title_card view_mitigasi">
+        <h3>Langkah Mitigasi</h3>
+        <hr />
+        <div class="d-flex flex-row justify-content-between m-3">
+          <div>
+            <form id="update_form">
+              <label class="col-form-label" for="id_solar_panel"
+                >Floating Solar Panel:</label
+              >
+              <input
+                class="form-control"
+                type="number"
+                id="id_solar_panel"
+                placeholder="Satuan n% luas danau"
+                required
+              />
+
+              <br />
+
+              <label class="col-form-label" for="id_jenis_ac"
+                >Penggantian Jenis AC:</label
+              >
+              <input
+                class="form-control"
+                type="number"
+                id="id_jenis_ac"
+                placeholder="Satuan n% total AC"
+                required
+              />
+
+              <br />
+
+              <label class="col-form-label" for="id_bis_kuning"
+                >Bis Kuning Elektrik:</label
+              >
+              <input
+                class="form-control"
+                type="number"
+                id="id_bis_kuning"
+                placeholder="Satuan unit total bis kuning"
+                required
+              />
+
+              <br />
+
+              <label class="col-form-label" for="id_car_free"
+                >Car Free Day:</label
+              >
+              <input
+                class="form-control"
+                type="number"
+                id="id_car_free"
+                placeholder="Satuan n hari/bulan"
+                required
+              />
+
+              <br />
+
+              <label class="col-form-label" for="id_dme">Penggunaan DME:</label>
+              <input
+                class="form-control"
+                type="number"
+                id="id_dme"
+                placeholder="Satuan n% total LPG"
+                required
+              />
+
+              <br />
+
+              <label class="col-form-label" for="id_dac"
+                >Direct Air Capture:</label
+              >
+              <input
+                class="form-control"
+                type="number"
+                id="id_dac"
+                placeholder="Satuan lainnya"
+                required
+              />
+
+              <br />
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Hitung</button>
+              </div>
+            </form>
+          </div>
+
+          <div style="width: 800px">
+            <table
+              id="id_table_emisi"
+              class="table table-bordered border-primary"
+            >
+              <thead>
+                <tr style="text-align: center">
+                  <th scope="col" colspan="1">Mitigasi</th>
+                  <th scope="col" colspan="1">Sektor</th>
+                  <th scope="col" colspan="2">Intensitas</th>
+                  <th scope="col" colspan="2">Penurunan</th>
+                </tr>
+                <tr style="text-align: center">
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col">Target</th>
+                  <th scope="col">Satuan</th>
+                  <th scope="col">tCO2eq</th>
+                  <th scope="col">%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Data 1-->
+                <tr>
+                  <td>Floating Solar Panel</td>
+                  <td>Listrik</td>
+                  <td>0</td>
+                  <td>% luas danau</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <!-- Data 2-->
+                <tr>
+                  <td>Penggantian Jenis AC</td>
+                  <td>Listrik</td>
+                  <td>0</td>
+                  <td>% total AC</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <!-- Data 3-->
+                <tr>
+                  <td>Bis Kuning Elektrik</td>
+                  <td>Transportasi</td>
+                  <td>0</td>
+                  <td>unit total bis kuning</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <!-- Data 4-->
+                <tr>
+                  <td>Car Free Day</td>
+                  <td>Transportasi</td>
+                  <td>0</td>
+                  <td>jumlah hari / bulan</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <!-- Data 5-->
+                <tr>
+                  <td>Penggunaan DME</td>
+                  <td>LPG</td>
+                  <td>0</td>
+                  <td>% total LPG</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+
+                <!-- Data 6-->
+                <tr>
+                  <td>Direct Air Capture</td>
+                  <td>Lainnya</td>
+                  <td>0</td>
+                  <td>total lainnya</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+
+                <!-- Total-->
+                <tr style="text-align: center">
+                  <td colspan="4">Total Penurunan</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tempat untuk menampilkan chart -->
+      <!--Scope-->
+      <div class="d-flex flex-row justify-content-between gap-10 mb-2">
+        <div class="canvas_card p-4 mt-1">
+          <h4>Scope 1</h4>
+          <h6>Transportasi - LPG - AC</h6>
+          <hr />
+          <div class="container_scope">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                text-align: center;
+              "
+            >
+              <h4 id="persentase_scope_1" class="txt_warna_primary">%</h4>
+              <h4 id="hasil_scope_1" class="txt_warna_primary">Angka scope1</h4>
+            </div>
+            <div class="canvas_scope_size">
+              <canvas id="scope_1" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="canvas_card p-4 mt-1">
+          <h4>Scope 2</h4>
+          <h6>Penggunaan Listrik</h6>
+          <hr />
+          <div class="container_scope">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                text-align: center;
+              "
+            >
+              <h4 id="persentase_scope_2" class="txt_warna_primary">%</h4>
+              <h4 id="hasil_scope_2" class="txt_warna_primary">Angka scope2</h4>
+            </div>
+            <div class="canvas_scope_size">
+              <canvas id="scope_2" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="canvas_card p-4 mt-1">
+          <h4>Scope 3</h4>
+          <h6>Kertas - Sampah - Semen</h6>
+          <hr />
+          <div class="container_scope">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                text-align: center;
+              "
+            >
+              <h4 id="persentase_scope_3" class="txt_warna_primary">%</h4>
+              <h4 id="hasil_scope_3" class="txt_warna_primary">Angka scope3</h4>
+            </div>
+            <div class="canvas_scope_size">
+              <canvas id="scope_3" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row justify-content-between">
+        <!-- Inisiasi chart sumber emisi-->
+        <div class="canvas_card p-5 canvas_sumber_emisi mt-1">
+          <div class="body-card">
+            <h4>Sumber Emisi</h4>
+            <hr />
+            <canvas id="sumber_emisi" width="400" height="200"></canvas>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column justify-content-between">
+          <!--Membuat Tampilan Total Emisi GRK UI-->
+          <div class="container canvas_card p-4 size_card">
+            <h4>Total Emisi GRK UI</h4>
+            <hr />
+            <h5 id="hasil_total_emisi" class="txt_warna_primary">33357,45</h5>
+          </div>
+
+          <!--Membuat Tampilan Serapan Hutan UI-->
+          <div class="container canvas_card p-4 size_card">
+            <h4>Serapan Hutan UI</h4>
+            <hr />
+            <canvas id="serapan_hutan" width="400px" height="200px"></canvas>
+            <div class="title_total_perhitungan">
+              <h6 class="txt_warna_primary">Total Serapan Hutan UI</h6>
+              <div class="total_perhitungan">
+                <h5 class="txt_total_perhitungan">52.133,31 tCO2eq</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="d-flex flex-row justify-content-between">
+        <!--Membuat Tampilan grafik Carbon Capture-->
+        <div class="canvas_card p-5 canvas_sumber_emisi_2 mt-1">
+          <div>
+            <h4>Carbon Capture</h4>
+            <hr />
+            <canvas id="carbon_capture" width="400" height="200"></canvas>
+          </div>
+        </div>
+
+        <!--Membuat Tampilan grafik Serapan Mikro Alga UI-->
+        <div>
+          <div class="canvas_card p-5 canvas_sumber_emisi_2 mt-1">
+            <div>
+              <h4>Serapan Mikro Alga UI</h4>
+              <hr />
+              <canvas id="mikro_alga" width="400" height="200"></canvas>
+              <div class="title_total_perhitungan">
+                <h6 class="txt_warna_primary">Total Serapan Mikroalga UI</h6>
+                <div class="total_perhitungan">
+                  <h5 class="txt_total_perhitungan">3.010,84 tCO2eq</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row">
+        <!--Membuat Tampilan Mitigasi Penurunan-->
+        <div class="container canvas_card p-4 size_card">
+          <h4>Potensi Carbon Credit Hutan UI</h4>
+          <hr />
+          <h6>Skema Penjualan - Total Serapan</h6>
+          <h5 class="txt_warna_primary">RP 4.215.291.914,5</h5>
+          <h6>Skema Penjualan Offset (serapan-emisi)</h6>
+          <h5 id="hasil_carbon_offset" class="txt_warna_primary">RP 1442501857,61</h5>
+        </div>
+
+        <!--Membuat Tampilan Total Carbon Offset-->
+        <div class="container canvas_card p-4 size_card">
+          <h4>Potensi Karbon Kredit Mikro Alga UI</h4>
+          <hr />
+          <h5 id="hasil_kredit_alga" class="txt_warna_primary">RP 3010,84 * rp $</h5>
+        </div>
+
+        <!--Membuat Tampilan Total Carbon Offset-->
+        <!--style="display: none;"-->
+        <div
+          id="visibility_kredit_mitigasi"
+          class="container canvas_card p-4 size_card"
+          style="max-height: 150px"
+        >
+          <h4>Potensi Karbon Kredit Mitigasi Penurunan</h4>
+          <hr />
+          <h5 id="rp_kredit_mitigasi" class="txt_warna_primary">total tco2eq tabel * rp $</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Library Chart.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 50px auto;
+    /*text-align: center;*/
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+form label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+form input {
+    padding: 5px;
+    margin-right: 20px;
+}
+
+button {
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+canvas {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.container_sumber_emisi {
+    /*Masih Kosong*/
+    width: 600px;
+   /* height: 700px;*/
+}
+
+.container_scope{
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    width: 350px;
+    height: 150px;
+}
+
+.canvas_scope_size{
+    width: 150px;
+    height: 250px;
+}
+
+.canvas_card{
+    width: 400px;
+    margin: 15px;
+    padding: 10px;
+    border: solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.canvas_sumber_emisi{
+    width: 60%;
+}
+
+.size_card{
+    max-width: 400px;
+}
+
+.card_no_canvas{
+    max-width: 400px;
+    margin: 15px;
+    padding: 10px;
+    border: solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.title_card{
+    margin: 15px;
+    padding: 10px;
+    border: solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.title_h4{
+    color: #154e9e; 
+    font-weight: 500
+}
+/*
+.view_mitigasi{
+    display: none;
+}
+*/
+
+.size_carbon_alga{
+    max-width:600px;
+}
+
+.canvas_sumber_emisi_2{
+    width: 600px;
+    max-width: 600px;
+    max-height: 500px;
+}
+
+.title_total_perhitungan{
+    text-align: center;
+    margin: 10px;
+    padding: 0px;
+}
+
+.total_perhitungan{
+    margin: auto;
+    padding: 5px;
+    max-width: 200px;
+    color: #fff;
+    border: solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(0, 65, 108);
+}
+
+.txt_total_perhitungan{
+    margin-top: 5px;
+}
+
+.txt_warna_secondary{
+    color: #505050;
+}
+
+.txt_warna_primary{
+    color: rgb(0, 65, 108);
+    font-weight: bold;
+}
